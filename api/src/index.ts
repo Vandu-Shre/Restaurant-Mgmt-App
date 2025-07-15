@@ -5,6 +5,8 @@ import passport from "passport";
 import { AppDataSource } from "./data-source";
 import "./passport";
 import authRouter from './routes/auth';
+import menuRouter from './routes/menu';
+import orderRouter from './routes/order';
 
 const app = express();
 const port = 3000;
@@ -30,7 +32,9 @@ app.use(passport.session());
 
 // Mount the router at /auth
 app.use('/auth', authRouter);
+app.use('/menu', menuRouter);
+app.use('/order', orderRouter);
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
-  });
+});
